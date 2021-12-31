@@ -8,7 +8,6 @@ public class LemonSojuApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LemonSojuApplication.class, args);
-		System.out.println("Hello I am Slave-01");
 	}
 
 }
