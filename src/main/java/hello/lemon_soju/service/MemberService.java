@@ -10,11 +10,9 @@ import java.util.List;
 import java.util.Optional;
 
 // Ctro + Shift + T -> 테스트 만들기
-@Service // Controller에서 MemberService를 사용하기 위해 선언
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    @Autowired // MemberController에서 MemberService를 가져오는데 MemberService는 MemberRepository를 가져와야 하므로 Autowired로 연결해줌
     public MemberService(MemberRepository memberRepository) { // 외부에서 memberRepository를 넣어줌
         this.memberRepository = memberRepository; // 이를 dependency injection이라고 함
     }
