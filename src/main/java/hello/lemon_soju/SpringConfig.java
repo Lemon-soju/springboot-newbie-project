@@ -1,6 +1,7 @@
 package hello.lemon_soju;
 
 import hello.lemon_soju.repository.JdbcMemberRepository;
+import hello.lemon_soju.repository.JdbcTemplateMemberRepository;
 import hello.lemon_soju.repository.MemberRepository;
 import hello.lemon_soju.repository.MemoryMemberRepository;
 import hello.lemon_soju.service.MemberService;
@@ -27,7 +28,7 @@ public class SpringConfig {
     @Bean
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository(); // 인터페이스는 new가 안되므로 구현체 생성
-        return new JdbcMemberRepository(dataSource);
-
+//        return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
