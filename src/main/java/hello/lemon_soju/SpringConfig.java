@@ -1,23 +1,24 @@
 package hello.lemon_soju;
 
-import hello.lemon_soju.repository.JdbcMemberRepository;
-import hello.lemon_soju.repository.JdbcTemplateMemberRepository;
-import hello.lemon_soju.repository.MemberRepository;
-import hello.lemon_soju.repository.MemoryMemberRepository;
+import hello.lemon_soju.repository.*;
 import hello.lemon_soju.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 
 @Configuration // Configuration과 Bean을 사용하면 Bean에 등록할 수 있음
 public class SpringConfig {
 
-    private DataSource dataSource;
 
-    @Autowired // Datasource는 스프링에서 자동으로 @Bean으로 등록하므로 Autowired로 사용 가능
-    public SpringConfig(DataSource dataSource){
+    private final EntityManager em;
+    private final DataSource dataSource;
+
+    @Autowired
+    public SpringConfig(EntityManager em, DataSource dataSource) {
+        this.em = em;
         this.dataSource = dataSource;
     }
 
@@ -29,6 +30,7 @@ public class SpringConfig {
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository(); // 인터페이스는 new가 안되므로 구현체 생성
 //        return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em);
     }
 }
