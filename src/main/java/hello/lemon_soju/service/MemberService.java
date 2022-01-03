@@ -2,14 +2,13 @@ package hello.lemon_soju.service;
 
 import hello.lemon_soju.domain.Member;
 import hello.lemon_soju.repository.MemberRepository;
-import hello.lemon_soju.repository.MemoryMemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 // Ctro + Shift + T -> 테스트 만들기
+@Transactional // JPA를 사용할 때 항상 Transactional를 사용해야함
 public class MemberService {
     private final MemberRepository memberRepository;
 
