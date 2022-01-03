@@ -1,5 +1,6 @@
 package hello.lemon_soju;
 
+import hello.lemon_soju.aop.TimeTraceAop;
 import hello.lemon_soju.repository.*;
 import hello.lemon_soju.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class SpringConfig {
     public MemberService memberService() {
         return new MemberService(memberRepository); // 같은 클래스이므로 Autowired 사용안하는 것으로 추측
     }
+
+
 //    @Bean
 //    public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository(); // 인터페이스는 new가 안되므로 구현체 생성
